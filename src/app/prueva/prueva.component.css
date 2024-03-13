@@ -1,0 +1,51 @@
+.agregar {
+    background-color: green;
+    height: 4em;
+    width: 8em;
+    color: black;
+}
+.lista {
+    font-size: 30px;
+    text-align: center;
+    height: 3em;
+
+}
+.seleccionar{
+    height: 3em;
+    width: 30%;
+
+}
+.borrar {
+    background-color: red;
+    width: 5em;
+    border-radius: 2em;
+}
+.tareas {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 10px;
+}
+.input {
+    text-align: center;
+    height: 8em;
+}
+.container {
+    display: grid; 
+    grid-template-columns: 50% 50%;
+  }
+
+  .tareas {
+    font-size: 28px;
+  }
+  .move-down-left {
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    margin: 0; 
+    background-color: orange;
+    width: 100%;
+  }
+  
+
+
+  
