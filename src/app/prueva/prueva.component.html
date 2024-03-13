@@ -11,11 +11,14 @@
 
 <div class="container">
 <div class="seccion">
-    <p class="tareas"> Pendientes <button class="borrar" (click)="setBorrar('P')" *ngIf="listaPendientes.length > 0">Borrar {{ listaPendientes.length }} </button></p>
+    <p class="tareas"> Pendientes <button class="borrar" (click)="setBorrar('P')" *ngIf="listaPendientes.length > 0">Borrar {{ listaPendientes.length }}  </button></p>
     <ul>
-        <li *ngFor="let item of listaPendientes; let i = index">
-            <input type="checkbox" [(ngModel)]="item.hecho" (change)="setHecho(i)">
-            {{item.valor}}
+        <li *ngFor="let item of listaPendientes; let posicion = index">
+            <input type="checkbox"  [(ngModel)]="item.hecho" (change)="setHecho(posicion)"> 
+            {{item.valor}} 
+            <span class="fecha">
+                {{item.fecha | date:'dd/MM/yy HH:mm:ss'}}
+            </span>
         </li>
     </ul> 
 </div> 
@@ -25,12 +28,15 @@
     <ul>
         <li *ngFor="let item of listaHecho; let i = index">
             <input type="checkbox" [(ngModel)]="item.hecho" (change)="setMover(i)">
-            {{item.valor}}
+            {{item.valor}} 
+            <span class="fecha">
+                {{item.fecha | date:'dd/MM/yy HH:mm:ss'}}
+            </span>
         </li>
     </ul>
 </div>
 </div>
 
 <div class="move-down-left">
-<p (click)="setTime">Última modificación: {{ ultimaModificacion | date:'dd/MM/yyyy HH:mm:ss' }}</p>
+<p>Última modificación: {{ ultimaModificacion | date:'dd/MM/yyyy HH:mm:ss' }}</p>
 </div>

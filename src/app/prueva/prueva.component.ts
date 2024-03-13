@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Tarea } from '../model/Tarea';
 
 @Component({
   selector: 'app-prueva',
@@ -7,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PruevaComponent implements OnInit {
 
-  listaHecho : any = [] = [];
-  listaPendientes : any = [] = [];
+  listaPendientes : Tarea[]  = [];
+  listaHecho : Tarea[] = [];
   textoInput: string = '' ;
   ultimaModificacion!: Date;
 
@@ -16,53 +17,52 @@ export class PruevaComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   agregar(): void  {
     if (this.textoInput.trim() !== '') {
-      const nuevaTarea = {
-          hecho: false , 
-          valor : this.textoInput,
-        }
-        this.listaPendientes.push(nuevaTarea);
-        this.textoInput = '';
-        this.ultimaModificacion = new Date();    
-    }
-  
 
+        this.listaPendientes.push(
+          {
+          hecho: false , 
+          valor: this.textoInput,
+          fecha: new Date()
+          }
+        );
+        this.textoInput = '';
+        this.setTime()
+    }
   }
   setHecho(index: number ): void {
     let tarea = this.listaPendientes[index]
     this.listaPendientes.splice(index,1);
     this.listaHecho.push(tarea);
-    this.ultimaModificacion = new Date();
+    this.setTime();
   }
   
   setMover(index: number ): void {
     let tarea = this.listaHecho[index]
     this.listaHecho.splice(index,1);
     this.listaPendientes.push(tarea);
-    this.ultimaModificacion = new Date();
+    this.setTime()
+
   }
-  
+
   setBorrar(type:string): void {
     if (type == 'P') {
       this.listaPendientes = [];
     } else {
       this.listaHecho = []
     }
+    this.setTime()
+
+  }
+  
+  setTime() : void {
     this.ultimaModificacion = new Date();
-
-}
-setTime(type: Date) : void {
-  this.ultimaModificacion = new Date();
+  }
 }
 
-
-
-}
-
-  // Crear funcion para cachar el check
-  // Crear funcion para sacar de la listaPendiente y agregar en listHechos
-  //  Como llenar una lista 
+  
 
 
 
