@@ -44,13 +44,10 @@ export class PruevaComponent implements OnInit {
   setBorrar(type:string): void {
     if (type == 'P') {
       this.listaTareas = this.listaTareas.filter(elento => elento.hecho)
-
     }else {
       this.listaTareas = this.listaTareas.filter(elento => !elento.hecho)
-
     };
     this.setTime();
-
   }
   
   setTime() : void {
