@@ -8,7 +8,7 @@
     font-size: 30px;
     text-align: center;
     height: 3em;
-
+    padding-top: 1rem;
 }
 .seleccionar{
     height: 3em;
@@ -20,23 +20,16 @@
     width: 5em;
     border-radius: 2em;
 }
-.tareas {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    gap: 10px;
-}
+
 .input {
     text-align: center;
     height: 8em;
 }
-.container {
-    display: grid; 
-    grid-template-columns: 50% 50%;
+.tareas {
+    font-size: 25px;
   }
 
-  .tareas {
-    font-size: 28px;
-  }
+
   .move-down-left {
     position: absolute; 
     bottom: 0; 
@@ -50,7 +43,17 @@
     font-size: small;
     color: gray;
   }
-  
+   .body {
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+   }
+   .body::before {
+    background-color: rgba(0, 0, 0, 0.2); /* Cambia el último valor (0.5) para ajustar la opacidad */
+}
+.container{
+  background-color: aliceblue;
+}
 
 
   

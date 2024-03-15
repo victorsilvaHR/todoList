@@ -8,10 +8,11 @@ import { Tarea } from '../model/Tarea';
 })
 export class PruevaComponent implements OnInit {
 
-  listaPendientes : Tarea[]  = [];
-  listaHecho : Tarea[] = [];
+  listaTareas: Tarea[] = [];
   textoInput: string = '' ;
   ultimaModificacion!: Date;
+  fondo= '/assets/todolist.png'
+
 
   constructor() { }
 
@@ -20,8 +21,7 @@ export class PruevaComponent implements OnInit {
 
   agregar(): void  {
     if (this.textoInput.trim() !== '') {
-
-        this.listaPendientes.push(
+        this.listaTareas.push(
           {
           hecho: false , 
           valor: this.textoInput,
@@ -29,31 +29,27 @@ export class PruevaComponent implements OnInit {
           }
         );
         this.textoInput = '';
-        this.setTime()
+        this.setTime();
     }
   }
-  setHecho(index: number ): void {
-    let tarea = this.listaPendientes[index]
-    this.listaPendientes.splice(index,1);
-    this.listaHecho.push(tarea);
-    this.setTime();
-  }
-  
-  setMover(index: number ): void {
-    let tarea = this.listaHecho[index]
-    this.listaHecho.splice(index,1);
-    this.listaPendientes.push(tarea);
-    this.setTime()
 
+  getPendientes() { 
+    return this.listaTareas.filter(elemento => !elemento.hecho)
   }
+  getHecho(){
+    return this.listaTareas.filter(elemnto => elemnto.hecho)
+  }
+
 
   setBorrar(type:string): void {
     if (type == 'P') {
-      this.listaPendientes = [];
-    } else {
-      this.listaHecho = []
-    }
-    this.setTime()
+      this.listaTareas = this.listaTareas.filter(elento => elento.hecho)
+
+    }else {
+      this.listaTareas = this.listaTareas.filter(elento => !elento.hecho)
+
+    };
+    this.setTime();
 
   }
   
